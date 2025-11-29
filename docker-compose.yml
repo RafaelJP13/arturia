@@ -1,10 +1,14 @@
-version: '3.9'
+version: "3.9"
 
 services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: ../infra/Dockerfile.frontend
+      dockerfile: ../infra/Dockerfile.frontend.dev
     ports:
-      - "3000:80"
-    container_name: arturia_frontend
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
