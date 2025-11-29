@@ -63,7 +63,7 @@ export const CartSidebar: React.FC = () => {
                 <button
                     onClick={clearCart}
                     disabled={loading}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                     Limpar Carrinho
                 </button>
@@ -71,7 +71,7 @@ export const CartSidebar: React.FC = () => {
                 <button
                     onClick={handleCheckout}
                     disabled={loading || cartItems.length === 0}
-                    className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                     {loading ? "Processando..." : "Finalizar Compra"}
                 </button>

@@ -13,7 +13,7 @@ export const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
             <p className="mt-2 font-bold">{formatCurrency(product.price)}</p>
 
             <button
-                className="mt-3 px-4 py-2 bg-black text-white rounded"
+                className="mt-3 px-4 py-2 bg-black text-white rounded cursor-pointer"
                 onClick={() => addItem(product)}
             >
                 Comprar

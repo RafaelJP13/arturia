@@ -10,7 +10,7 @@ export default function App() {
     return (
         <CartProvider>
             <div className="min-h-screen bg-neutral-100 p-4 flex flex-col">
-                <nav className="flex gap-2 mb-4 text-lg font-medium bg-white p-2 rounded shadow-sm">
+                <nav className="flex gap-2 mb-4 text-lg font-medium bg-white p-2 rounded shadow-sm cursor-pointer">
                     <button
                         className={`px-3 py-1 rounded hover:bg-gray-200 transition ${page === "Produtos" ? "bg-gray-200" : ""
                             }`}
@@ -19,7 +19,7 @@ export default function App() {
                         Produtos
                     </button>
                     <button
-                        className={`px-3 py-1 rounded hover:bg-gray-200 transition ${page === "Pedidos" ? "bg-gray-200" : ""
+                        className={`px-3 py-1 rounded hover:bg-gray-200 transition cursor-pointer ${page === "Pedidos" ? "bg-gray-200" : ""
                             }`}
                         onClick={() => setPage("Pedidos")}
                     >
