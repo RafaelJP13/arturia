@@ -1,0 +1,16 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Copia apenas dependências
+COPY package*.json ./
+RUN npm ci
+
+# Copia o restante do código
+COPY . .
+
+# Expõe porta padrão do Vite
+EXPOSE 5173
+
+# Rodar dev server do Vite (hot reload)
+CMD ["npm", "run", "dev"]
