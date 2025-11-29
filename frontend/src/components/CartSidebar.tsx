@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useShoppingCart } from "../hooks/useShoppingCart";
 import { formatCurrency } from "../utils/formatters";
-import { saveOrder } from "../services/websql/websqlClient";
+import { saveOrder } from "../services/indexedDBClient";
 
 export const CartSidebar: React.FC = () => {
     const { cartItems, total, clearCart } = useShoppingCart();
