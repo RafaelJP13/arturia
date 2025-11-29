@@ -22,23 +22,23 @@ export const CartSidebar: React.FC = () => {
                 }))
             );
             clearCart();
-            setMessage(`✅ Order #${orderId} created successfully!`);
+            setMessage(`✅ Pedido #${orderId} criado com sucesso!`);
         } catch (err) {
             console.error(err);
-            setMessage("❌ Failed to create order. Try again.");
+            setMessage("❌ Falha ao criar pedido. Tente Novamente.");
         } finally {
             setLoading(false);
-            setTimeout(() => setMessage(""), 3000); // limpa a mensagem depois de 3s
+            setTimeout(() => setMessage(""), 3000);
         }
     };
 
     return (
         <aside className="bg-white p-4 rounded-lg shadow-md flex flex-col space-y-3">
-            <h3 className="font-bold text-lg border-b pb-2">Cart</h3>
+            <h3 className="font-bold text-lg border-b pb-2">Carrinho</h3>
 
             <div className="flex-1 overflow-y-auto max-h-[400px]">
                 {cartItems.length === 0 ? (
-                    <p className="text-sm text-gray-500 mt-2">Empty cart</p>
+                    <p className="text-sm text-gray-500 mt-2">Carrinho Vazio</p>
                 ) : (
                     <div className="space-y-2">
                         {cartItems.map((item) => (
@@ -65,7 +65,7 @@ export const CartSidebar: React.FC = () => {
                     disabled={loading}
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    Clear Cart
+                    Limpar Carrinho
                 </button>
 
                 <button
@@ -73,7 +73,7 @@ export const CartSidebar: React.FC = () => {
                     disabled={loading || cartItems.length === 0}
                     className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    {loading ? "Processing..." : "Buy Now"}
+                    {loading ? "Processando..." : "Finalizar Compra"}
                 </button>
 
                 {message && (

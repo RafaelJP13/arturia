@@ -16,7 +16,7 @@ export const ProductCard: React.FC<{ product: Product }> = ({ product }) => {
                 className="mt-3 px-4 py-2 bg-black text-white rounded"
                 onClick={() => addItem(product)}
             >
-                Add to Cart
+                Comprar
             </button>
         </div>
     );
