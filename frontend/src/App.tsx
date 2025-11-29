@@ -28,13 +28,6 @@ export default function App() {
                     >
                         Orders
                     </button>
-                    <button
-                        className={`px-3 py-1 rounded hover:bg-gray-200 transition ${page === "info" ? "bg-gray-200" : ""
-                            }`}
-                        onClick={() => setPage("info")}
-                    >
-                        Project Info
-                    </button>
                 </nav>
 
                 {/* Conteúdo principal com sidebar */}
