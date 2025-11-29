@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { listOrders, listOrderItems } from "../services/websql/websqlClient";
-import type { Order, OrderItem } from "../services/websql/websqlClient";
+import { listOrders, listOrderItems } from "../services/indexedDBClient";
+import type { Order, OrderItem } from "../services/indexedDBClient";
 
 const OrdersPage: React.FC = () => {
     const [orders, setOrders] = useState<Order[]>([]);
