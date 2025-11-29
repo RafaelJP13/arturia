@@ -26,6 +26,6 @@ cd arturia
 docker compose up --build
 ```
 
-💻 Abra o site por aqui: http://localhost:3000
+💻 Abra o site por aqui: http://localhost:5173
 
 💡 O backend de pedidos está usando IndexedDB no navegador, então não é necessário configurar servidor adicional.
