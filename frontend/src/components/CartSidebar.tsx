@@ -22,10 +22,10 @@ export const CartSidebar: React.FC = () => {
                 }))
             );
             clearCart();
-            setMessage(`Order #${orderId} created successfully!`);
+            setMessage(`✅ Order #${orderId} created successfully!`);
         } catch (err) {
             console.error(err);
-            setMessage("Failed to create order. Try again.");
+            setMessage("❌ Failed to create order. Try again.");
         } finally {
             setLoading(false);
             setTimeout(() => setMessage(""), 3000); // limpa a mensagem depois de 3s
@@ -33,45 +33,54 @@ export const CartSidebar: React.FC = () => {
     };
 
     return (
-        <aside className="bg-white p-4 rounded shadow w-full">
-            <h3 className="font-bold mb-2">Cart</h3>
+        <aside className="bg-white p-4 rounded-lg shadow-md flex flex-col space-y-3">
+            <h3 className="font-bold text-lg border-b pb-2">Cart</h3>
 
-            {cartItems.length === 0 && <p className="text-sm text-gray-500">Empty cart</p>}
-
-            {cartItems.map((item) => (
-                <div key={item.code} className="flex justify-between border-b py-2">
-                    <span>{item.description} (x{item.quantity})</span>
-                    <span>{formatCurrency(item.price)}</span>
-                </div>
-            ))}
+            <div className="flex-1 overflow-y-auto max-h-[400px]">
+                {cartItems.length === 0 ? (
+                    <p className="text-sm text-gray-500 mt-2">Empty cart</p>
+                ) : (
+                    <div className="space-y-2">
+                        {cartItems.map((item) => (
+                            <div key={item.code} className="flex justify-between items-center border-b py-1">
+                                <div className="flex flex-col">
+                                    <span className="font-medium">{item.description}</span>
+                                    <span className="text-gray-500 text-sm">(x{item.quantity})</span>
+                                </div>
+                                <span className="font-semibold">{formatCurrency(item.price)}</span>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
 
             <div className="mt-3 border-t pt-3 space-y-2">
-                <div className="flex justify-between font-semibold mb-2">
+                <div className="flex justify-between font-semibold text-gray-800">
                     <span>Total</span>
                     <span>{formatCurrency(total)}</span>
                 </div>
 
-                {/* Renderiza Buy Now somente se houver itens */}
-                {cartItems.length > 0 && (
-                    <button
-                        onClick={handleCheckout}
-                        disabled={loading}
-                        className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-50"
-                    >
-                        {loading ? "Processing..." : "Buy Now"}
-                    </button>
-                )}
-
-                {/* Botão de limpar carrinho sempre visível */}
                 <button
                     onClick={clearCart}
-                    className="w-full bg-gray-800 text-white py-2 rounded hover:bg-gray-900"
+                    disabled={loading}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     Clear Cart
                 </button>
 
-                {/* Mensagem de feedback */}
-                {message && <p className="mt-2 text-sm text-green-600">{message}</p>}
+                <button
+                    onClick={handleCheckout}
+                    disabled={loading || cartItems.length === 0}
+                    className="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                    {loading ? "Processing..." : "Buy Now"}
+                </button>
+
+                {message && (
+                    <p className="text-sm text-center text-gray-700 mt-1">
+                        {message}
+                    </p>
+                )}
             </div>
         </aside>
     );

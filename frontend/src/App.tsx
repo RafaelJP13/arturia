@@ -11,24 +11,44 @@ export default function App() {
 
     return (
         <CartProvider>
-            <div className="min-h-screen bg-neutral-100 p-6 grid grid-cols-12 gap-6">
-
-                <nav className="col-span-12 flex gap-4 mb-4 text-lg font-medium">
-                    <button onClick={() => setPage("catalog")}>Catalog</button>
-                    <button onClick={() => setPage("orders")}>Orders</button>
-                    <button onClick={() => setPage("info")}>Project Info</button>
+            <div className="min-h-screen bg-neutral-100 p-4 flex flex-col">
+                {/* Menu horizontal compacto */}
+                <nav className="flex gap-2 mb-4 text-lg font-medium bg-white p-2 rounded shadow-sm">
+                    <button
+                        className={`px-3 py-1 rounded hover:bg-gray-200 transition ${page === "catalog" ? "bg-gray-200" : ""
+                            }`}
+                        onClick={() => setPage("catalog")}
+                    >
+                        Catalog
+                    </button>
+                    <button
+                        className={`px-3 py-1 rounded hover:bg-gray-200 transition ${page === "orders" ? "bg-gray-200" : ""
+                            }`}
+                        onClick={() => setPage("orders")}
+                    >
+                        Orders
+                    </button>
+                    <button
+                        className={`px-3 py-1 rounded hover:bg-gray-200 transition ${page === "info" ? "bg-gray-200" : ""
+                            }`}
+                        onClick={() => setPage("info")}
+                    >
+                        Project Info
+                    </button>
                 </nav>
 
-                <main className="col-span-9">
-                    {page === "catalog" && <CatalogPage />}
-                    {page === "orders" && <OrdersPage />}
-                    {page === "info" && <ProjectInfoPage />}
-                </main>
+                {/* Conteúdo principal com sidebar */}
+                <div className="flex gap-4 flex-1">
+                    <main className="flex-1">
+                        {page === "catalog" && <CatalogPage />}
+                        {page === "orders" && <OrdersPage />}
+                        {page === "info" && <ProjectInfoPage />}
+                    </main>
 
-                <aside className="col-span-3">
-                    <CartSidebar />
-                </aside>
-
+                    <aside className="w-80">
+                        <CartSidebar />
+                    </aside>
+                </div>
             </div>
         </CartProvider>
     );
